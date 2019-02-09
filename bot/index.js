@@ -43,6 +43,28 @@ app.post('/receive_message', asyncHandler(async (req, res) => {
   res.json({ success: true })
 }))
 
+app.post('/receive_notification', asyncHandler(async (req, res) => {
+  const m = req.body
+  let text = '<b>Service: ' + m.service + '</b>\n'
+  if (m.header) {
+    text += '<b>' + BotApi.encodeHTML(m.header) + '</b>\n'
+  }
+  if (m.title) {
+    text += '<b>' + BotApi.encodeHTML(m.title) + '</b>\n'
+  }
+  if (m.subtitle) {
+    text += '<b>' + BotApi.encodeHTML(m.subtitle) + '</b>\n'
+  }
+  text += '\n' + BotApi.encodeHTML(m.message)
+  await ba.sendMessageAsync({
+    chat_id: config.bot.master_id,
+    text,
+    parse_mode: 'HTML',
+  })
+
+  res.json({ success: true })
+}))
+
 const server = app.listen(config.web.port, config.web.hostname, function () {
   const host = server.address().address
   const port = server.address().port
