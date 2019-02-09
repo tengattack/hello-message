@@ -66,8 +66,8 @@ int main(int argc, char *argv[]) {
             continue;
         }
         if (last_message_id == 0) {
-            //last_message_id = rows[0].message_id;
-            //continue;
+            last_message_id = rows[0].message_id;
+            continue;
         }
     
         nlohmann::json body = nlohmann::json::array();
