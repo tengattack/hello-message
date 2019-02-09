@@ -1,0 +1,7 @@
+.git* text eol=lf
+*.cpp text eol=lf
+*.js text eol=lf
+*.json text eol=lf
+*.plist text eol=lf
+*.md text eol=lf
+Makefile text eol=lf

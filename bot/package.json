@@ -1,0 +1,20 @@
+{
+  "name": "telegram-hello-message-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "express": "^4.16.4",
+    "express-async-handler": "^1.1.4",
+    "request": "^2.88.0"
+  }
+}
