@@ -47,7 +47,7 @@ app.post('/receive_notification', asyncHandler(async (req, res) => {
   const m = req.body
   let text = '<b>Service: ' + m.service + '</b>\n'
   if (m.header) {
-    text += '<b>' + BotApi.encodeHTML(m.header) + '</b>\n'
+    text += '<b>From: ' + BotApi.encodeHTML(m.header) + '</b>\n'
   }
   if (m.title) {
     text += '<b>' + BotApi.encodeHTML(m.title) + '</b>\n'
@@ -55,7 +55,10 @@ app.post('/receive_notification', asyncHandler(async (req, res) => {
   if (m.subtitle) {
     text += '<b>' + BotApi.encodeHTML(m.subtitle) + '</b>\n'
   }
-  text += '\n' + BotApi.encodeHTML(m.message)
+  if (m.message) {
+    // mobiletimer
+    text += BotApi.encodeHTML(m.message)
+  }
   await ba.sendMessageAsync({
     chat_id: config.bot.master_id,
     text,
